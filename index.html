@@ -10,7 +10,7 @@
 		var minutes = ('0' + today.getMinutes()).slice(-2);
 		//var seconds = ('0' + today.getSeconds()).slice(-2); 
 		//var timeString = hours + ':' + minutes  + ':' + seconds;
-		var timeString = hours + ':' + minutes;	
+		var timeString = hours + '<font color="red">:</font>' + minutes;	
 			
 		document.getElementById('time').innerHTML = timeString;	
 	}
