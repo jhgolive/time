@@ -6,20 +6,20 @@
 		
 		// 글자 모음
 		const letters = [
-		  "쩡햄Live",
-		  "구독좋아요",
-		  "자율적후원",
-		  //"1♡버듸꼰듀",
-		  //"2♡귀요밍님",
-		  //"2♡하리라님",
-		  //"3순종아줌마",
-                  //"1♡금꽃곰님",
-	          //"2♡오상희님",
-		  //"3♡개밥그릇",
-		  //"3♡겸손정빈",
-		  //"3♡8월의님",
-	          //"5♡트로이님",
-		  "감사합니다"
+			"쩡햄Live",
+			"자율적후원",
+			//"1♡버듸꼰듀",
+			//"2♡귀요밍",
+			//"2♡하리라",
+			//"3순종아줌마",
+                	//"1♡금꽃곰",
+	        	//"2♡오상희",
+			//"3♡개밥그릇",
+			//"3♡겸손정빈",
+			//"3♡8월의",
+	        	//"5♡트로이",
+			"구독좋아요",
+			"감사합니다"
 		];
 		
 		// 글자 입력 속도
@@ -28,45 +28,46 @@
 		
 		// 타이핑 효과
 		const typing = async () => {  
-		  const letter = letters[i].split("");
+			const letter = letters[i].split("");
 		  
-		  while (letter.length) {
-		    await wait(speed);
-		    $text.innerHTML += letter.shift(); 
-		  }
+			while (letter.length) {
+		    		await wait(speed);
+		    		$text.innerHTML += letter.shift(); 
+		  	}
 		  
-		  // 잠시 대기
-		  await wait(10000);
+			// 잠시 대기
+			await wait(10000);
 		  
-		  // 지우는 효과
-		  remove();
+			// 지우는 효과
+			remove();
 		}
 		
 		// 글자 지우는 효과
 		const remove = async () => {
-		  const letter = letters[i].split("");
+			const letter = letters[i].split("");
 		  
-		  while (letter.length) {
-		    await wait(speed);
+			while (letter.length) {
+		    		await wait(speed);
 		    
-		    letter.pop();
-		    $text.innerHTML = letter.join(""); 
-		  }
+		    		letter.pop();
+		    		$text.innerHTML = letter.join(""); 
+		  	}
 		  
-		  // 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
-		  i = !letters[i+1] ? 0 : i + 1;
-		  typing();
+		  	// 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
+		  	i = !letters[i+1] ? 0 : i + 1;
+		  	typing();
 		}
 		
 		// 딜레이 기능 ( 마이크로초 )
 		function wait(ms) {
-		  return new Promise(res => setTimeout(res, ms))
+			return new Promise(res => setTimeout(res, ms))
 		}
 		
 		// 초기 실행
 		setTimeout(typing, 1000);
 	}
-		
+
+	// 시계
 	function time() {
 		var today = new Date();   
 
