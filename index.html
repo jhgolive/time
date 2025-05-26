@@ -34,6 +34,7 @@
 			const letter = letters[i].split("");
 		  
 			while (letter.length) {
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
 		    		await wait(speed);
 		    		$text.innerHTML += letter.shift(); 
 			}
@@ -50,6 +51,7 @@
 			const letter = letters[i].split("");
 		  
 			while (letter.length) {
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
 		    		await wait(speed);
 		    
 		    		letter.pop();
@@ -89,7 +91,7 @@
 	<table>
 		<tr>
 			<td width="275">
-				<span class="typing" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;"><span class="text"></span></span>
+				<span class="typing" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;"><span id="textcolor" class="text"></span></span>
 			</td>
 			<td>
 				<span style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;"><font color="#FFD700">카카오</font> 3333-07-6967896 <font color="#4682B4">오☆한</font>&ensp;&ensp;&ensp;&ensp;</span>
