@@ -35,7 +35,10 @@
 		  
 			while (letter.length) {
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
-		    		await wait(speed);
+		    		document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('후원',`<span style="color: red;">${"후원"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('구독',`<span style="color: red;">${"구독"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('감사',`<span style="color: red;">${"감사"}</span>`);
+				await wait(speed);
 		    		$text.innerHTML += letter.shift(); 
 			}
 		  
@@ -52,7 +55,10 @@
 		  
 			while (letter.length) {
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
-		    		await wait(speed);
+		    		document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('후원',`<span style="color: red;">${"후원"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('구독',`<span style="color: red;">${"구독"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('감사',`<span style="color: red;">${"감사"}</span>`);
+				await wait(speed);
 		    
 		    		letter.pop();
 		    		$text.innerHTML = letter.join(""); 
