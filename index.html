@@ -18,7 +18,7 @@
       ];
 
       const wordList = [
-        { words: ["L","0","1","2","3","4","5","6","7","8","9","10","후원","구독","감사","YOON","다시","다시","다시"], color: "red" },
+        { words: ["L", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "후원", "구독", "감사", "YOON", "다시"], color: "red" },
         { words: ["AGAIN"], color: "#6495ED" }
       ];
 
@@ -30,20 +30,23 @@
         const typingChars = [];
         const consumed = Array(raw.length).fill(false);
 
-        // 단어 묶음에 대해 색상 지정
+        // === 색상 지정 (중복 단어 처리) ===
         for (const group of wordList) {
           for (const word of group.words) {
-            const index = raw.indexOf(word);
-            if (index !== -1) {
+            let startIndex = 0;
+            while (startIndex < raw.length) {
+              const index = raw.indexOf(word, startIndex);
+              if (index === -1) break;
               for (let j = 0; j < word.length; j++) {
                 typingChars[index + j] = { char: word[j], color: group.color };
                 consumed[index + j] = true;
               }
+              startIndex = index + 1;
             }
           }
         }
 
-        // 나머지는 기본 색상 white
+        // 나머지는 기본색 (white)
         for (let j = 0; j < raw.length; j++) {
           if (!consumed[j]) {
             typingChars[j] = { char: raw[j], color: "white" };
@@ -114,7 +117,7 @@
       let friction = 0.6;
       let posX = x;
       let posY = y;
-      const ground = y + 0; // 글자 바로 아래 쌓이도록 수정
+      const ground = y + 0; // 쌓이는 위치
 
       function fall() {
         dy += gravity;
@@ -132,7 +135,7 @@
             setTimeout(() => {
               let opacity = 1;
               const fadeOut = () => {
-                opacity -= 1;  // 더 빠르게 감소
+                opacity -= 1; // 빠르게 제거
                 if (opacity <= 0) {
                   brick.remove();
                 } else {
@@ -141,7 +144,7 @@
                 }
               };
               fadeOut();
-            }, 200);	 // 지연시간도 절반 이하로 줄임
+            }, 200); // 제거 시간 줄임
           }
         }
 
