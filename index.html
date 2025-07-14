@@ -10,7 +10,7 @@
   function typing() {
     const $text = document.querySelector(".typing .text");
     const letters = [
-				"1쩡햄Live",
+				"2쩡햄Live",
 				//"자율적후원",
 				"자율적후원  1______ ★ 큰 힘 감사합니다 ٩(ˊᗜˋ*)و",
 				"1______ 2______ 3______ ★ 큰 힘 감사합니다 ٩(ˊᗜˋ*)و",
@@ -74,6 +74,9 @@
         const span = document.createElement("span");
         span.textContent = char;
         span.style.color = color;
+	if (color === "transparent") {
+  		span.style.textShadow = "none"; // 테두리도 숨김
+	}
         $text.appendChild(span);
 
         const rect = span.getBoundingClientRect();
