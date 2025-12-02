@@ -6,6 +6,10 @@
 <title>로고계좌타임</title>
 </head>
 <script type="module">
+
+// 최적화 문제로 파편 애니메이션 완전 비활성화, 파편 나오게 하려면 아래 한 줄만 주석처리
+window.createBricksBatch = () => {};
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
@@ -362,5 +366,6 @@ const wordListCol = collection(db, "wordList");
   </table>
 </body>
 </html>
+
 
 
