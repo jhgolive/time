@@ -111,9 +111,6 @@ const wordListCol = collection(db, "wordList");
         const span = document.createElement("span");
         span.textContent = char;
         span.style.color = color;
-        span.style.backgroundColor = "darkred";   // ★ 여기 추가
-        span.style.padding = "2px 4px";
-        span.style.borderRadius = "4px"
         if (color === "transparent") {
           span.style.textShadow = "none"; // 테두리도 숨김
         }
@@ -354,6 +351,12 @@ const wordListCol = collection(db, "wordList");
   .time-change {
     color: #FFC700 !important;
   }
+  .typing .text span {
+    background-color: darkred;
+    padding: 4px 6px;
+    border-radius: 6px;
+    margin-right: 2px;
+  }
 </style>
 <body>
   <br />
@@ -374,6 +377,7 @@ const wordListCol = collection(db, "wordList");
   </table>
 </body>
 </html>
+
 
 
 
