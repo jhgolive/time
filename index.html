@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<title>로고계좌타임</title>
+
+<style>
+body {
+  font-family: "HY울릉도B", "Montserrat", "Noto Sans KR", sans-serif;
+}
+
+#time span {
+  color: white;
+  transition: color 5s ease;
+}
+
+.time-change {
+  color: #FFC700 !important;
+}
+
+tr {
+  display: inline-block;
+  background: rgba(0, 0, 51, 1);
+  line-height: 0.8;
+  padding: 0px 20px 5px 20px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+<br />
+
+<table border="0">
+  <tr>
+    <td width="975"
+        style="vertical-align: top; text-align: right; white-space: nowrap; padding-right: 100px;">
+
+      <span style="
+        color:white;
+        font-size:45px;
+        font-weight:bold;
+        font-family:hy울릉도b;
+        text-shadow:
+          -2px 0 black,
+           0 2px black,
+           2px 0 black,
+           0 -2px black,
+          -2px -2px black,
+          -2px 2px black,
+           2px -2px black,
+           2px 2px black;">
+        <font color="#FFC700">카카오</font>
+        33330-7696-7896
+        <font color="#6495ED">오J한</font>
+      </span>
+
+    </td>
+
+    <td style="vertical-align: top; text-align: right; padding-left: 35px;">
+      <span id="time" style="
+        color:white;
+        font-size:45px;
+        font-weight:bold;
+        font-family:hy울릉도b;
+        text-shadow:
+          -2px 0 black,
+           0 2px black,
+           2px 0 black,
+           0 -2px black,
+          -2px -2px black,
+          -2px 2px black,
+           2px -2px black,
+           2px 2px black;">
+      </span>
+    </td>
+  </tr>
+</table>
+
+<script>
+let prevTimeStr = "";
+let timeChangeTimeouts = [];
+
+function time() {
+  const today = new Date();
+  const hours = ("0" + today.getHours()).slice(-2);
+  const minutes = ("0" + today.getMinutes()).slice(-2);
+  const currentTimeStr = hours + ":" + minutes;
+
+  const timeEl = document.getElementById("time");
+  timeEl.innerHTML = "";
+
+  timeChangeTimeouts.forEach(id => clearTimeout(id));
+  timeChangeTimeouts = [];
+
+  for (let i = 0; i < currentTimeStr.length; i++) {
+    const span = document.createElement("span");
+    span.textContent = currentTimeStr[i];
+
+    if (prevTimeStr && currentTimeStr[i] !== prevTimeStr[i]) {
+      span.classList.add("time-change");
+
+      const timeoutId = setTimeout(() => {
+        span.classList.remove("time-change");
+      }, 50);
+
+      timeChangeTimeouts.push(timeoutId);
+    }
+
+    timeEl.appendChild(span);
+  }
+
+  prevTimeStr = currentTimeStr;
+}
+
+time();
+setInterval(time, 60000);
+</script>
+
+</body>
+</html>
