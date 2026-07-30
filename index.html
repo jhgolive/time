@@ -67,7 +67,7 @@ tr {
            2px 2px black;">
       </span>
     </td>
-    <td width="850"
+    <td width="830"
         style="vertical-align: top; text-align: left; white-space: nowrap; padding-left: 100px;">
 
       <span style="
@@ -160,8 +160,8 @@ function updateUptime(){
   const h = Math.floor(diffMin / 60);
   const m = diffMin % 60;
 
-  uptime.textContent =
-    `on ${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;
+  uptime.innerHTML =
+    `on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
 
   uptime.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
 }
