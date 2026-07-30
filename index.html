@@ -33,15 +33,14 @@ tr {
   top: -6px;
 }
 
-.warning {
-  color: red !important;
-  animation: blink 1s steps(2, start) infinite;
+.uptime-warning{
+    animation: blinkRed 1s steps(2,end) infinite;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+@keyframes blinkRed{
+    to{
+        color:red;
+    }
 }
 </style>
 </head>
@@ -68,7 +67,7 @@ tr {
            2px 2px black;">
       </span>
     </td>
-    <td width="975"
+    <td width="905"
         style="vertical-align: top; text-align: left; white-space: nowrap; padding-left: 100px;">
 
       <span style="
@@ -106,12 +105,16 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
+        on 00:00
       </span>
     </td>
   </tr>
 </table>
 
 <script>
+const startTime = Date.now();
+const uptime = document.getElementById("uptime");
+  
 let prevTimeStr = "";
 let timeChangeTimeouts = [];
 
@@ -123,7 +126,7 @@ function time() {
 
   const timeEl = document.getElementById("time");
   timeEl.innerHTML = "";
-
+ 
   timeChangeTimeouts.forEach(id => clearTimeout(id));
   timeChangeTimeouts = [];
 
@@ -151,31 +154,25 @@ function time() {
   prevTimeStr = currentTimeStr;
 }
 
-time();
-setInterval(time, 60000);
+function updateUptime(){
+  const diffMin = Math.floor((Date.now() - startTime) / 60000);
 
-const startTime = Date.now();
+  const h = Math.floor(diffMin / 60);
+  const m = diffMin % 60;
 
-function updateUptime() {
-  const elapsed = Date.now() - startTime;
+  uptime.textContent =
+    `on ${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;
 
-  const totalMinutes = Math.floor(elapsed / 60000);
-
-  const h = String(Math.floor(totalMinutes / 60)).padStart(2, "0");
-  const m = String(totalMinutes % 60).padStart(2, "0");
-
-  const el = document.getElementById("uptime");
-  el.textContent = "on " + h + ":" + m;
-
-  // 11시간30분(690분)
-  //if (totalMinutes >= 690) {
-  if (totalMinutes >= 1) {
-    el.classList.add("warning");
-  }
+  uptime.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
 }
 
+time();
 updateUptime();
-setInterval(updateUptime, 60000);  
+
+setInterval(() => {
+  time();
+  updateUptime();
+}, 60000);
 </script>
 
 </body>
