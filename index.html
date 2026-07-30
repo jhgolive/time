@@ -43,8 +43,16 @@ tr {
     }
 }
 
+#time,
 #uptime {
-  font-family: "hy울릉도b", sans-serif !important;
+  color:white;
+  font-size:45px;
+  font-weight:bold;
+  font-family:"HY울릉도B" !important;
+}
+
+#uptime span {
+  font-family:"HY울릉도B" !important;
 }
 </style>
 </head>
@@ -164,8 +172,10 @@ function updateUptime(){
   const h = Math.floor(diffMin / 60);
   const m = diffMin % 60;
 
+  //uptime.innerHTML =
+    //`on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
   uptime.innerHTML =
-    `on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
+    `<span>on</span> <span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span>`;
 
   uptime.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
 }
