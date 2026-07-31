@@ -98,7 +98,7 @@ tr {
            2px 2px black;">
         <font color="#FFC700">카카오</font>
         33330-7696-7896
-        <font color="#6495ED">오a한</font>
+        <font color="#6495ED">오J한</font>
       </span>
 
     </td>
@@ -172,10 +172,10 @@ function updateUptime(){
   const h = Math.floor(diffMin / 60);
   const m = diffMin % 60;
 
-  //uptime.innerHTML =
-    //`on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
   uptime.innerHTML =
-    `<span>on</span> <span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span>`;
+    `on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
+  //uptime.innerHTML =
+    //`<span>on</span> <span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span>`;
 
   uptime.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
 }
