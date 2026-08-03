@@ -37,12 +37,20 @@ tr {
     animation: blinkRed 1s steps(2,end) infinite;
 }
 
+/*
 @keyframes blinkRed{
     to{
         color:red;
     }
 }
+*/
 
+@keyframes blinkRed {
+  50% {
+    color: red !important;
+  }
+}
+  
 #time,
 #uptime {
   color:white;
@@ -96,7 +104,7 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">3카카오</font>
+        <font color="#FFC700">카카오</font>
         <span id="accountText">33330-7696-7896</span>
         <font color="#6495ED">오J한</font>
       </span>
@@ -188,7 +196,7 @@ function updateUptime(){
 
   const blink = diffMin >= 1;
 
-  document.querySelectorAll("#time span, #accountText, #uptime span")
+  document.querySelectorAll("#accountText, #uptime span")
   .forEach(el => {
     el.classList.toggle("uptime-warning", blink);
   });
