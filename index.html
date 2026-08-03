@@ -37,18 +37,10 @@ tr {
     animation: blinkRed 1s steps(2,end) infinite;
 }
 
-/*
 @keyframes blinkRed{
     to{
         color:red;
     }
-}
-*/
-
-@keyframes blinkRed {
-  50% {
-    color: red !important;
-  }
 }
   
 #time,
@@ -196,7 +188,7 @@ function updateUptime(){
 
   const blink = diffMin >= 1;
 
-  document.querySelectorAll("#accountText, #uptime span")
+  document.querySelectorAll("#accountText, #uptimeValue")
   .forEach(el => {
     el.classList.toggle("uptime-warning", blink);
   });
