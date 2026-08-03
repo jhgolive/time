@@ -63,7 +63,7 @@ tr {
 <table border="0" style="white-space: nowrap;">
   <tr>
     <td style="vertical-align: top; text-align: left; padding-left: 0px;">
-      <span id="time" style="
+      <span id="time,uptimeValue" style="
         color:white;
         font-size:45px;
         font-weight:bold;
@@ -96,8 +96,8 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">카카오</font>
-        33330-7696-7896
+        <font color="#FFC700">1카카오</font>
+        <span id="uptimeValue">33330-7696-7896</span>
         <font color="#6495ED">오J한</font>
       </span>
 
@@ -184,7 +184,7 @@ function updateUptime(){
     <span>on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
   
   const uptimeValue = document.getElementById("uptimeValue");
-  uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
+  uptimeValue.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
 }
 
 time();
