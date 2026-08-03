@@ -63,7 +63,6 @@ tr {
 <table border="0" style="white-space: nowrap;">
   <tr>
     <td style="vertical-align: top; text-align: left; padding-left: 0px;">
-      <span id="uptimeValue">
       <span id="time" style="
         color:white;
         font-size:45px;
@@ -78,7 +77,7 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-      </span></span>
+      </span>
     </td>
     <td width="774"
         style="vertical-align: top; text-align: left; white-space: nowrap; padding-left: 135px;">
@@ -97,8 +96,8 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">2카카오</font>
-        <span id="uptimeValue">33330-7696-7896</span>
+        <font color="#FFC700">3카카오</font>
+        <span id="accountText">33330-7696-7896</span>
         <font color="#6495ED">오J한</font>
       </span>
 
@@ -184,8 +183,15 @@ function updateUptime(){
   uptime.innerHTML = `
     <span>on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
   
-  const uptimeValue = document.getElementById("uptimeValue");
-  uptimeValue.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
+  //const uptimeValue = document.getElementById("uptimeValue");
+  //uptimeValue.classList.toggle("uptime-warning", diffMin >= 1);  // 점멸시작
+
+  const blink = diffMin >= 1;
+
+  document.querySelectorAll("#time span, #accountText, #uptime span")
+  .forEach(el => {
+    el.classList.toggle("uptime-warning", blink);
+  });
 }
 
 time();
