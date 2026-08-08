@@ -33,19 +33,11 @@ tr {
   top: -6px;
 }
 
-/*.uptime-warning{
+.uptime-warning{
     animation: blinkRed 1s steps(2,end) infinite;
-}*/
-
-.uptime-warning {
-  /* step-end를 사용해 색상 전환 시 중간 보간 없이 즉시 변경 */
-  animation: blinkRed 1s step-end infinite;
 }
 
 @keyframes blinkRed{
-    /* to{
-        color:red;
-    } */
     50% {
       /* 100% 원색 빨간색 (HEX: #FF0000) */
       color: #FF0000 !important;
@@ -105,7 +97,7 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">카카사</font>
+        <font color="#FFC700">카카오</font>
         <span id="accountText1">33330</span>-<span id="accountText2">7696</span>-<span id="accountText3">7896</span>
         <font color="#6495ED">오J한</font>
       </span>
