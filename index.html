@@ -36,11 +36,14 @@ tr {
 .uptime-warning{
     animation: blinkRed 1s steps(2,end) infinite;
 }
-
+/*
+.uptime-warning{
+    animation: blinkRed 1s steps(2,end) infinite;
+}
+*/
 @keyframes blinkRed{
-    50% {
-      /* 100% 원색 빨간색 (HEX: #FF0000) */
-      color: #FF0000 !important;
+    to{
+        color:red;
     }
 }
   
