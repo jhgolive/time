@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet"> -->
+<title>계좌타임</title>
+
+<style>
+body {
+  font-family: "HY울릉도B", "Montserrat", "Noto Sans KR", sans-serif;
+}
+
+#time span {
+  color: white;
+  transition: color 5s ease;
+}
+
+.time-change {
+  color: #FFC700 !important;
+}
+
+tr {
+  display: inline-block;
+  background: rgba(0, 0, 51, 1);
+  line-height: 0.8;
+  padding: 0px 20px 5px 20px;
+  /* border-radius: 10px; */
+  border-radius: 0px;
+}
+
+.colon {
+  position: relative;
+  top: -6px;
+}
+
+.uptime-warning{
+    animation: blinkRed 1s steps(2,end) infinite;
+}
+/*
+@keyframes blinkRed{
+    to{
+        color:red;
+    }
+}
+*/
+@keyframes blinkRed {
+  0%, 49% {
+    color: white;
+  }
+  50%, 100% {
+    color: #ff0000;
+  }
+}
+  
+#time,
+#uptime {
+  color:white;
+  font-size:45px;
+  font-weight:bold;
+  font-family: "hy울릉도b", "Montserrat", "Noto Sans KR", sans-serif;
+}
+
+#uptime span {
+  font-family: "hy울릉도b", "Montserrat", "Noto Sans KR", sans-serif;
+}
+
+/* 계좌번호 숫자 점멸 */
+.account-digit {
+  color: white;
+  display: inline-block;
+}
+
+/* 하이픈은 항상 흰색 */
+.account-hyphen {
+  color: white;
+}
+
+/* 빨간 점멸 */
+.account-digit.blink-red {
+  animation: accountBlink 0.18s steps(2, end);
+}
+
+@keyframes accountBlink {
+  0%, 100% {
+    color: white;
+  }
+
+  50% {
+    color: #ff0000;
+  }
+}
+</style>
+</head>
+
+<body>
+<br />
+
+<table border="0" style="white-space: nowrap;">
+  <tr>
+    <td style="vertical-align: top; text-align: left; padding-left: 0px;">
+      <span id="time" style="
+        color:white;
+        font-size:45px;
+        font-weight:bold;
+        font-family:hy울릉도b;
+        text-shadow:
+          -2px 0 black,
+           0 2px black,
+           2px 0 black,
+           0 -2px black,
+          -2px -2px black,
+          -2px 2px black,
+           2px -2px black,
+           2px 2px black;">
+      </span>
+    </td>
+    <td width="774" style="vertical-align: top; text-align: left; white-space: nowrap; padding-left: 135px;">
+      <span style="
+        color:white;
+        font-size:45px;
+        font-weight:bold;
+        font-family:hy울릉도b;
+        text-shadow:
+          -2px 0 black,
+           0 2px black,
+           2px 0 black,
+           0 -2px black,
+          -2px -2px black,
+          -2px 2px black,
+           2px -2px black,
+           2px 2px black;">
+        <font color="#FFC700">카카일</font>
+        <span id="accountNumber">
+          <span class="account-digit">3</span>
+          <span class="account-digit">3</span>
+          <span class="account-digit">3</span>
+          <span class="account-digit">3</span>
+          <span class="account-digit">0</span>
+          <span class="account-hyphen">-</span>
+          <span class="account-digit">7</span>
+          <span class="account-digit">6</span>
+          <span class="account-digit">9</span>
+          <span class="account-digit">6</span>
+          <span class="account-hyphen">-</span>
+          <span class="account-digit">7</span>
+          <span class="account-digit">8</span>
+          <span class="account-digit">9</span>
+          <span class="account-digit">6</span>
+        </span>
+        <font color="#6495ED">오J한</font>
+      </span>
+    </td>
+    <td style="vertical-align: top; text-align: left; padding-right: 0px;">
+      <span id="uptime" style="
+        color:white;
+        font-size:45px;
+        font-weight:bold;
+        font-family:hy울릉도b;
+        text-shadow:
+          -2px 0 black,
+           0 2px black,
+           2px 0 black,
+           0 -2px black,
+          -2px -2px black,
+          -2px 2px black,
+           2px -2px black,
+           2px 2px black;">
+        on 00:00
+      </span>
+    </td>
+  </tr>
+</table>
+
+<script>
+const startTime = Date.now();
+const uptime = document.getElementById("uptime");
+  
+let prevTimeStr = "";
+let timeChangeTimeouts = [];
+
+function time() {
+  const today = new Date();
+  const hours = ("0" + today.getHours()).slice(-2);
+  const minutes = ("0" + today.getMinutes()).slice(-2);
+  const currentTimeStr = hours + ":" + minutes;
+
+  const timeEl = document.getElementById("time");
+  timeEl.innerHTML = "";
+ 
+  timeChangeTimeouts.forEach(id => clearTimeout(id));
+  timeChangeTimeouts = [];
+
+  for (let i = 0; i < currentTimeStr.length; i++) {
+    const span = document.createElement("span");
+    span.textContent = currentTimeStr[i];
+
+    if (currentTimeStr[i] === ":") {
+      span.classList.add("colon");
+    }
+    
+    if (prevTimeStr && currentTimeStr[i] !== prevTimeStr[i]) {
+      span.classList.add("time-change");
+
+      const timeoutId = setTimeout(() => {
+        span.classList.remove("time-change");
+      }, 50);
+
+      timeChangeTimeouts.push(timeoutId);
+    }
+
+    timeEl.appendChild(span);
+  }
+
+  prevTimeStr = currentTimeStr;
+}
+
+function updateUptime(){
+  const diffMin = Math.floor((Date.now() - startTime) / 60000);
+
+  const h = Math.floor(diffMin / 60);
+  const m = diffMin % 60;
+
+  //uptime.innerHTML =
+    //`on ${String(h).padStart(2,"0")}<span class="colon">:</span>${String(m).padStart(2,"0")}`;
+  //uptime.innerHTML =
+    //`<span>on</span> <span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span>`;
+
+  //uptime.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
+
+  // 시간만 점멸
+  uptime.innerHTML = `
+    <span style="color:red;">on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
+  
+  //const uptimeValue = document.getElementById("uptimeValue");
+  //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
+
+  const blink = diffMin >= 1;  // 점멸시작 11시간30분 = 690
+}
+
+let accountBlinkTimer = null;
+let accountBlinkIndex = 0;
+let accountBlinkDirection = 1;
+
+function startAccountBlink() {
+  const digits = document.querySelectorAll(".account-digit");
+
+  // 기존 타이머 제거
+  if (accountBlinkTimer) {
+    clearInterval(accountBlinkTimer);
+  }
+
+  // 초기화
+  digits.forEach(el => {
+    el.classList.remove("blink-red");
+  });
+
+  accountBlinkIndex = 0;
+  accountBlinkDirection = 1;
+
+  function blinkNext() {
+    digits.forEach(el => {
+      el.classList.remove("blink-red");
+    });
+
+    digits[accountBlinkIndex].classList.add("blink-red");
+
+    // 왼쪽 → 오른쪽
+    if (accountBlinkDirection === 1) {
+      if (accountBlinkIndex >= digits.length - 1) {
+        accountBlinkDirection = -1;
+        accountBlinkIndex--;
+      } else {
+        accountBlinkIndex++;
+      }
+    }
+
+    // 오른쪽 → 왼쪽
+    else {
+      if (accountBlinkIndex <= 0) {
+        accountBlinkDirection = 1;
+        accountBlinkIndex++;
+      } else {
+        accountBlinkIndex--;
+      }
+    }
+  }
+
+  blinkNext();
+
+  accountBlinkTimer = setInterval(blinkNext, 180);
+}
+  
+time();
+updateUptime();
+startAccountBlink();
+
+setInterval(() => {
+  time();
+  updateUptime();
+}, 60000);
+</script>
+
+</body>
+</html>
