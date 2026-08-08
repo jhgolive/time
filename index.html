@@ -118,7 +118,7 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">카카일</font>
+        <font color="#FFC700">카카오</font>
         <span id="accountNumber">
 <!--<span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">0</span><span class="account-hyphen">-</span><span class="account-digit">7</span><span class="account-digit">6</span><span class="account-digit">9</span><span class="account-digit">6</span><span class="account-hyphen">-</span><span class="account-digit">7</span><span class="account-digit">8</span><span class="account-digit">9</span><span class="account-digit">6</span>-->
 <span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">3</span><span class="account-digit">0</span><span class="account-digit">-</span><span class="account-digit">7</span><span class="account-digit">6</span><span class="account-digit">9</span><span class="account-digit">6</span><span class="account-digit">-</span><span class="account-digit">7</span><span class="account-digit">8</span><span class="account-digit">9</span><span class="account-digit">6</span>
@@ -210,7 +210,7 @@ function updateUptime(){
   //const uptimeValue = document.getElementById("uptimeValue");
   //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
 
-  const blink = diffMin >= 1;  // 점멸시작 11시간30분 = 690
+  const blink = diffMin >= 690;  // 점멸시작 11시간30분 = 690
 
   document.querySelectorAll("#uptimeValue")
   .forEach(el => {
@@ -272,7 +272,7 @@ function startAccountBlink() {
 
   blinkNext();
 
-  accountBlinkTimer = setInterval(blinkNext, 100);
+  accountBlinkTimer = setInterval(blinkNext, 100);  // 이동속도
 }
   
 time();
