@@ -105,7 +105,7 @@ tr {
           -2px 2px black,
            2px -2px black,
            2px 2px black;">
-        <font color="#FFC700">카카일</font>
+        <font color="#FFC700">카카오</font>
         <span id="accountText1">33330</span>-<span id="accountText2">7696</span>-<span id="accountText3">7896</span>
         <font color="#6495ED">오J한</font>
       </span>
@@ -195,7 +195,7 @@ function updateUptime(){
   //const uptimeValue = document.getElementById("uptimeValue");
   //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
 
-  const blink = diffMin >= 1;  // 점멸시작 11시간30분 = 690
+  const blink = diffMin >= 690;  // 점멸시작 11시간30분 = 690
 
   document.querySelectorAll("#accountText1, #accountText2, #accountText3, #uptimeValue")
   .forEach(el => {
