@@ -181,7 +181,7 @@ function updateUptime(){
 
   // 시간만 점멸
   uptime.innerHTML = `
-    <span>on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
+    <span style="color:red;">on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
   
   //const uptimeValue = document.getElementById("uptimeValue");
   //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
