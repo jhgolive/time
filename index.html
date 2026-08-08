@@ -210,6 +210,11 @@ function updateUptime(){
   //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
 
   const blink = diffMin >= 1;  // 점멸시작 11시간30분 = 690
+
+  document.querySelectorAll("#uptimeValue")
+  .forEach(el => {
+    el.classList.toggle("uptime-warning", blink);
+  });
   
   if (blink && !accountBlinkTimer) {
     startAccountBlink();
@@ -266,7 +271,7 @@ function startAccountBlink() {
 
   blinkNext();
 
-  accountBlinkTimer = setInterval(blinkNext, 250);
+  accountBlinkTimer = setInterval(blinkNext, 100);
 }
   
 time();
