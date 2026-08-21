@@ -64,6 +64,10 @@ tr {
   font-family: "hy울릉도b", "Montserrat", "Noto Sans KR", sans-serif;
 }
 
+#uptimeValue {
+  color: #555 !important;
+}
+  
 /* 계좌번호 숫자 점멸 */
 .account-digit {
   color: white;
@@ -205,7 +209,7 @@ function updateUptime(){
 
   // 시간만 점멸
   uptime.innerHTML = `
-    <span style="color:red;">on</span> <span id="uptimeValue" style="color:#555;><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
+    <span style="color:red;">on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
   
   //const uptimeValue = document.getElementById("uptimeValue");
   //uptimeValue.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
