@@ -233,8 +233,8 @@ function updateUptime(){
   //uptime.classList.toggle("uptime-warning", diffMin >= 690);  // 점멸시작
 
   // 시간만 점멸
-  uptime.innerHTML = `
-    // <span style="color:darkred;">on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
+  // <span style="color:darkred;">on</span> <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
+  uptime.innerHTML = `    
      <span id="uptimeValue"><span>${String(h).padStart(2,"0")}</span><span class="colon">:</span><span>${String(m).padStart(2,"0")}</span></span>`;
   
   //const uptimeValue = document.getElementById("uptimeValue");
